@@ -1,12 +1,18 @@
 # A simple library for unsupervised Polarimetric SAR change detection
 
 ## Introduction
-this is a simple library for unsupervised Polarimetric SAR change detection. the main function is the **unsupervised_CD** function in unsupervised_CD.py
+This is a simple library for unsupervised Polarimetric SAR change detection. The main function is the `**unsupervised_CD**` function in `unsupervised_CD.py`.
+
+The workflow of change detection is:
+1. read C3 (covaraince matrix) of the PolSAR data
+2. perform boxcar smoothing to ensure non-negative definteness of C3 matrix
+3. calculate the pixel-wise distance between two PolSAR images. Availabel distance metrics: `Bartlett distance, revised Wishart distance, symmetric revised Wishart distance`
+4. perform [generalized histogram thresholding algorithm](https://arxiv.org/abs/2007.07350) to segment the change and unchange pixels
 
 ## Example
-edit in the `if __name__ == '__main__'` part of unsupervised_change_detection.py like below
-```
-if __name__ == '__main__'
+Edit in the `if __name__ == '__main__'` part of unsupervised_change_detection.py like below
+```python
+if __name__ == '__main__':
     fa = r'path/to/C3/folder_A'
     fb = r'path/to/C3/folder_B'
     gt = r'path/to/groundtruth/file'
@@ -17,6 +23,7 @@ if __name__ == '__main__'
 
     print(f'confusion_matrix:\n{confusion_matrix}')
 ```
+
 The change detection result will be like that below:
 <!-- <center> -->
 <!-- ![time A](images/PauliRGB_1.bmp) -->
