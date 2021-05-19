@@ -4,19 +4,19 @@
 this is a simple library for unsupervised Polarimetric SAR change detection. the main function is the **unsupervised_CD** function in unsupervised_CD.py
 
 ## Example
-edit in the "if __name__ == '__main__'" part of unsupervised_change_detection.py like below
+edit in the `if __name__ == '__main__'` part of unsupervised_change_detection.py like below
+```
+if __name__ == '__main__'
+    fa = r'path/to/C3/folder_A'
+    fb = r'path/to/C3/folder_B'
+    gt = r'path/to/groundtruth/file'
+    save_path = r'path/to/save/result/images'
+    
+    confusion_matrix = unsupervised_CD(fa, fb, save_path, gt,
+                        is_print=True, distance_type='Bartlett')
 
-        if __name__ == '__main__'
-            fa = r'path/to/C3/folder_A'
-            fb = r'path/to/C3/folder_B'
-            gt = r'path/to/groundtruth/file'
-            save_path = r'path/to/save/result/images'
-            
-            confusion_matrix = unsupervised_CD(fa, fb, save_path, gt,
-                                is_print=True, distance_type='Bartlett')
-
-            print(f'confusion_matrix:\n{confusion_matrix}')
-
+    print(f'confusion_matrix:\n{confusion_matrix}')
+```
 The change detection result will be like that below:
 <!-- <center> -->
 <!-- ![time A](images/PauliRGB_1.bmp) -->
